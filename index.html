@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#11101b"><title>VideoDL · 海外版</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body><main class="wrap">
+<header><div class="brand">VideoDL <span>OVERSEAS</span></div><div class="sub">淘宝 / 天猫 / Facebook 视频助手 · 无需第三方 API</div></header>
+<section class="card">
+<label for="source">粘贴淘宝/天猫商品链接或 Facebook 视频链接</label>
+<textarea id="source" placeholder="粘贴分享链接或包含链接的整段文字"></textarea>
+<button id="resolve" class="primary">解析视频</button><div id="status" class="status" aria-live="polite"></div>
+<p class="hint">通过 Netlify Functions 在服务器端读取公开页面，并尝试提取页面中公开暴露的视频地址。无需支付宝、AppKey 或第三方解析 API。需要登录、验证码、私密权限、付费或受 DRM 保护的视频不会被绕过；因此不能保证每个链接都成功。</p>
+</section>
+<section class="card" id="browserAssist">
+<div class="sectionTitle">手机 / 电脑辅助提取（无需第三方 API）</div>
+<p class="hint">先在淘宝/天猫或 Facebook 页面打开视频，尽量点播放，再运行下面的书签脚本。它只检查当前浏览器页面已加载的元素和资源，不会登录或绕过平台限制。</p>
+<ol class="assistSteps"><li>把下方脚本复制。</li><li>在浏览器新建一个书签，将书签网址/URL 替换为复制的脚本。</li><li>打开商品页，点这个书签；如果找到候选视频，复制地址回到本网站粘贴。</li></ol>
+<textarea id="bookmarklet" readonly></textarea>
+<button id="copyBookmarklet" class="secondary">复制辅助脚本</button>
+<p class="hint">iPhone Safari：先随便添加一个书签，再编辑书签，把网址替换成脚本。Android / 电脑：也可创建书签并把网址设为脚本。不同浏览器可能限制书签脚本运行。仅处理你有权访问和保存的内容。</p>
+</section>
+<section id="result" class="card hidden">
+<div class="product"><div><h2 id="title">—</h2><p id="itemId">—</p></div></div>
+<div class="previewBox"><video id="preview" controls playsinline preload="metadata"></video></div>
+<div class="formatNote" id="formatNote"></div>
+<div class="actions"><button id="download" class="primary">打开 / 保存视频</button><button id="openSource" class="secondary">打开来源页面</button></div>
+<p class="hint">iPhone / Android 可在浏览器中打开视频，再使用浏览器分享或下载菜单。M3U8 是流媒体播放列表，不一定能直接保存成 MP4。浏览器可能无法直接保存到相册。</p>
+</section>
+<section class="card"><div class="sectionTitle">最近记录</div><div id="history"><div class="empty">暂无记录</div></div><button id="clearHistory" class="secondary smallBtn">清除记录</button></section>
+<footer>仅处理你有权访问和保存的公开内容。不会绕过登录、验证码、付费、DRM 或其他访问控制。</footer>
+</main><script src="/app.js"></script></body></html>
