@@ -1,0 +1,13 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Compatibility route for the older front-end/API path.
+[[redirects]]
+  from = "/api/resolve"
+  to = "/.netlify/functions/parse-video"
+  status = 200
+  force = true
